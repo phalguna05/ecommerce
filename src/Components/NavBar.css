@@ -1,0 +1,120 @@
+ul.topnav {
+  list-style-type: none;
+  margin-left: 20px;
+  margin-right: 30px;
+  padding: 2px;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 19px;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+ul.topnav li a:hover:not(.active) {
+  cursor: pointer;
+}
+.icon {
+  width: 45px;
+  height: 45px;
+  border: black;
+  margin-left: 30vw;
+}
+ul.topnav li a.active {
+  margin-top: 5px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ul.topnav li.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+}
+.search {
+  float: right;
+  width: 200px;
+  box-sizing: border-box;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+
+.search:focus {
+  width: 30%;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.dropbtn {
+  font-size: 19px;
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.imgcart {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+}
+.custom-select {
+  height: 32px;
+  width: 150px;
+  border-radius: 5px;
+  background-color: rgb(43, 43, 43);
+  text-align: center;
+  border-color: black;
+  margin-left: 10px;
+  font-size: 15px;
+  color: white;
+  padding: 4px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
