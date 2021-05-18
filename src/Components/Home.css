@@ -1,3 +1,28 @@
 body {
-  background-color: whitesmoke;
+	background-color: whitesmoke;
+	margin: 0px;
+}
+.categories {
+	margin-top: 15px;
+	cursor: pointer;
+	width: 17vw;
+	padding: 8px;
+	border-radius: 6px;
+	margin-left: 8px;
+	margin-right: 2px;
+	border: black;
+	color: black;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 5px 8px rgba(154, 160, 185, 0.05),
+		0 15px 40px rgba(166, 173, 201, 0.2);
+}
+
+.categories:hover {
+	background-color: lightblue;
+}
+.box {
+	margin-left: 4vw;
+}
+.categories_active {
+	background-color: lightblue;
 }

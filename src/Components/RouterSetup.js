@@ -2,7 +2,8 @@ import React from 'react';
 import Home from './Home';
 import Cart from './Cart';
 import {Redirect,BrowserRouter as Router,Route} from 'react-router-dom';
-
+import Login from './Login';
+import Orders from './Orders';
 const RouterSetup=()=>{
     return(
         <Router>
@@ -12,7 +13,12 @@ const RouterSetup=()=>{
             <Route path="/Home">
                 <Home/>
             </Route>
-           
+            <Route path="/Login">
+                <Login/>
+            </Route>
+            <Route path="/Orders">
+                <Orders/>
+            </Route>
             <Route path="/Cart">
                 <Cart/>
             </Route>

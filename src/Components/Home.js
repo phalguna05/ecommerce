@@ -1,54 +1,62 @@
 import React, { useEffect,useContext } from 'react';
-import {ProductContext} from './ProductContext';
+import {addProducts,changeCategory} from '../Actions/actions';
 import Product from './Product';
 import NavBar from './NavBar';
-import {CartContext} from './CartContext';
-import { CategoryContext } from './CategoryContext';
-import { searchContext } from './SearchContext';
+import './Home.css';
+import {useSelector,useDispatch} from 'react-redux';
 const Home=()=>{
-    const user=localStorage.getItem("User");
-    console.log(user);
-    const [product,setProduct]=useContext(ProductContext);
-    const [cart,setCart]=useContext(CartContext);
-    const [category,setCategory]=useContext(CategoryContext);
-    const [search,setSearch]=useContext(searchContext);
-    console.log(search);
-    console.log(category);
-    if(product.length==0){
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
+    const handleCategory=(val)=>{
+       dispatch(changeCategory(val));
+    }
+    const getProducts=()=>{
+        if(state.products.length==0){
             fetch('https://fakestoreapi.com/products')
                 .then(res=>res.json())
-                .then(data=>setProduct([...product,...data]));
+                .then(data=>dispatch(addProducts(data)));
+        }
                 
     }
+    
+    useEffect(() => {
+        getProducts();
+    }, [])
     return(
-        <div>
-            <NavBar/>
+    <>
+            <NavBar style={{marginTop:'0px'}}/>
+            <div className="box">
+                <button className="categories" onClick={()=>{handleCategory('All')}}>All</button>
+                <button className="categories" onClick={()=>{handleCategory("men's clothing")}}>Men's Clothing</button>
+                <button className="categories" onClick={()=>{handleCategory("women's clothing")}}>Women's Clothing</button>
+                <button className="categories" onClick={()=>{handleCategory("electronics")}}>Electronics</button>
+                <button className="categories" onClick={()=>{handleCategory("jewelery")}}>Jewellery</button>
+            </div>
             
         {
-            category=="All"?
-            search.length==0?
-            product.map(products=>(
+            state.category=="All"?
+            state.searchItem.length==0?
+            state.products.map(products=>(
             
             <Product product={products}></Product>))
             :
             
-            product.filter(prod=>{
-                for(var i=0;i<search.length;i++){
-                    if(search[i].title==prod.title){
+            state.products.filter(prod=>{
+                    if(prod.title.toLowerCase().includes(state.searchItem)){
                         return true;
                     }
                 }
-            }).map(products=>(
+            ).map(products=>(
             
                 <Product product={products}></Product>))
             
             
             :
-            product.filter(products=>products.category==category).map(products=>(
+            state.products.filter(products=>products.category==state.category).map(products=>(
                 <Product product={products}></Product>
             ))
         }
-        </div>
+        </>
     )
 
 }
